@@ -8,8 +8,9 @@ provider "aws" {
 
 resource "aws_key_pair" "mykey"{
  key_name = "myawskey"
- public_key ="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtYZxREjp1g5Kz4sV+PVfi4/gfFtJTR41HFadf+vD6VxOkDSsD0hh+EP03Hs968hZnoo2pAg2/wS1nBgXL4Xw2YinBGU0qU983KZSUv1RfhbwyI2Yv53T3Y3V7WtRXLg5h4+o3Hx/QrzChycPWaN9VPzRfqIGtvfHEkY+68GToppnRixfUH2oyGcAJHBCNtxHg7gDiESe33zafoVtfZXRpIctE3Vc/eHzE4cQFk9JKppXUMG96bpVqkzDvJSsET5YcdOYQkBp4GtY99m+ECKPU7plOLwH7GA8Hyj6lrRVR6UqnJnwKFwiSS6RG4PabOmwP4f/1OVNQN+9AjZyOP8YH ishit@LAPTOP-KBEINS24"
+ public_key ="ssh-rsa AAAABS1nBgXL4Xw2YinBGUxfUH2oyGcAJHBCNtxHg7gDiESe33zafoVtfZXRpIctE3Vc/eHzE4cQFk9JKppXUMG96bpVqkzDvJSsET5YcdOYQkBp4GtY99m+ECKPU7plOLwH7GA8Hyj6lrRVR6UqnJnwKFwiSS6RG4PabOmwP4f/1OVNQN+9AjZyOP8YH ishit@LAPTOP-KBEINS24"
 }
+
 
 
 resource "aws_security_group" "sg" {
@@ -70,7 +71,7 @@ resource "aws_instance"  "myinstance" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo yum install httpd  php git -y",
+      "sudo yum install httpd git -y",
       "sudo systemctl restart httpd",
       "sudo systemctl enable httpd",
     ]
@@ -128,7 +129,7 @@ provisioner "remote-exec" {
 
 resource "aws_s3_bucket" "bucket" {
   bucket = "terraform-bucket-001"
-  acl= "public-read"
+  acl= "private"
   provisioner "local-exec" {
                 command = "mkdir new1"
   }
@@ -228,7 +229,7 @@ provisioner "remote-exec" {
     inline = [
 
       "sudo su << EOF",
-      "echo \"<img src='http://${self.domain_name}/${aws_s3_bucket_object.object.key}'>\" >> /var/www/html/index.html",
+      "echo \"<img src='http://${aws_cloudfront_distribution.s3_distribution.domain_name}/${aws_s3_bucket_object.object.key}'>\" >> /var/www/html/index.html",
       "EOF",
     ]
 
