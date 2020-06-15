@@ -8,7 +8,7 @@ provider "aws" {
 
 resource "aws_key_pair" "mykey"{
  key_name = "myawskey"
- public_key ="ssh-rsa AAAABS1nBgXL4Xw2YinBGUxfUH2oyGcAJHBCNtxHg7gDiESe33zafoVtfZXRpIctE3Vc/eHzE4cQFk9JKppXUMG96bpVqkzDvJSsET5YcdOYQkBp4GtY99m+ECKPU7plOLwH7GA8Hyj6lrRVR6UqnJnwKFwiSS6RG4PabOmwP4f/1OVNQN+9AjZyOP8YH ishit@LAPTOP-KBEINS24"
+ public_key ="ssh-rsa AAAABS1nBgXL4Xw2YinBGUxfdbhuegwbuyewhgbyUH2oyGcAJHBCNtxHg7gDiESe33zafoVtf"
 }
 
 
