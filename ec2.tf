@@ -3,9 +3,7 @@ provider "aws" {
  profile = "aws_user"
 }
 
-variable "enter_your_key" {
-   default = "myawskey"
-}
+
  
 
 resource "aws_key_pair" "mykey"{
@@ -13,9 +11,6 @@ resource "aws_key_pair" "mykey"{
  public_key ="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtYZxREjp1g5Kz4sV+PVfi4/gfFtJTR41HFadf+vD6VxOkDSsD0hh+EP03Hs968hZnoo2pAg2/wS1nBgXL4Xw2YinBGU0qU983KZSUv1RfhbwyI2Yv53T3Y3V7WtRXLg5h4+o3Hx/QrzChycPWaN9VPzRfqIGtvfHEkY+68GToppnRixfUH2oyGcAJHBCNtxHg7gDiESe33zafoVtfZXRpIctE3Vc/eHzE4cQFk9JKppXUMG96bpVqkzDvJSsET5YcdOYQkBp4GtY99m+ECKPU7plOLwH7GA8Hyj6lrRVR6UqnJnwKFwiSS6RG4PabOmwP4f/1OVNQN+9AjZyOP8YH ishit@LAPTOP-KBEINS24"
 }
 
-variable "enter_your_security_group_name" {
-   default = "sg_for_aws_instance"
-}
 
 resource "aws_security_group" "sg" {
   name        = "sg_for_aws_instance"
